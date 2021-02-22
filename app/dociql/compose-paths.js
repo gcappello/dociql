@@ -84,26 +84,34 @@ module.exports = function (domains, graphQLSchema) {
                     description: `${item.description}`,
                     schema: {
                         "$ref": "#/definitions/Errors",
-                        // example: {
-                        //     type: "object",
-                        //     properties: {
-                        //         message: {
-                        //             description: "Error description",
-                        //             type: "string",
-                        //             examples: "Example"
-                        //         },
-                        //         extensions: {
-                        //             type: "object",
-                        //             properties: {
-                        //                 code: {
-                        //                     description: "Error code",
-                        //                     type: "string",
-                        //                     examples: "PRESCRIPTION_NOT_FOUND"
-                        //                 }
-                        //             }
-                        //         }
-                        //     }
-                        // }
+                        example: {
+                            type: "object",
+                            properties: {
+                                errors: {
+                                    type: "array",
+                                    items: {
+                                        type: "object",
+                                        properties: {
+                                            message: {
+                                                description: "Error description",
+                                                type: "string",
+                                                example: `${item.description}`
+                                            },
+                                            extensions: {
+                                                type: "object",
+                                                properties: {
+                                                    code: {
+                                                        description: "Error code",
+                                                        type: "string",
+                                                        example: `${item.code}`
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
              });

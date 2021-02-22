@@ -70,6 +70,45 @@ module.exports = function (domains, graphQLSchema) {
 
         args.push(bodyArg);
 
+        let responses = {
+            '200': {
+                description: "Successful operation",
+                schema: responseSchema
+            }
+        };
+
+        // Add error responses
+        if (usecase.errors !== undefined) {
+             usecase.errors.forEach((item) => {
+                responses[item.code] = {
+                    description: `${item.description}`,
+                    schema: {
+                        "$ref": "#/definitions/Errors",
+                        // example: {
+                        //     type: "object",
+                        //     properties: {
+                        //         message: {
+                        //             description: "Error description",
+                        //             type: "string",
+                        //             examples: "Example"
+                        //         },
+                        //         extensions: {
+                        //             type: "object",
+                        //             properties: {
+                        //                 code: {
+                        //                     description: "Error code",
+                        //                     type: "string",
+                        //                     examples: "PRESCRIPTION_NOT_FOUND"
+                        //                 }
+                        //             }
+                        //         }
+                        //     }
+                        // }
+                    }
+                }
+             });
+        }
+
         result[operationId] = {
             post: {
                 tags: [tag],
@@ -79,12 +118,7 @@ module.exports = function (domains, graphQLSchema) {
                 consumes: ["application/json"],
                 produces: ["application/json"],
                 parameters: args,
-                responses: {
-                    '200': {
-                        description: "Successful operation",
-                        schema: responseSchema
-                    },
-                }
+                responses: responses
             }
         }
 

@@ -35,4 +35,19 @@ const errorDefinitions = {
     }
 };
 
-module.exports = errorDefinitions;
+const errorCode = {
+    "ErrorCode": {
+        "type": "string",
+        "$ref": "#/definitions/String"
+    }
+};
+
+module.exports = function (jsonSchemaDefinition) {
+    let definitions = {...jsonSchemaDefinition, ...errorDefinitions};
+
+    if (definitions["ErrorCode"] === undefined) {
+        definitions = {...definitions, ...errorCode};
+    }
+
+    return definitions;
+};

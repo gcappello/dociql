@@ -4,7 +4,7 @@ const url = require('url')
 const fs = require("fs")
 const fetchSchema = require("./fetch-schema")
 const composePaths = require("./compose-paths")
-const composeErrorDefinitions = require("./compose-error-definitions");
+const addErrorDefinitions = require("./add-error-definitions");
 
 module.exports = function(specPath, headers) {
     // read spec file content
@@ -34,7 +34,7 @@ module.exports = function(specPath, headers) {
         })),
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
-        definitions: composeErrorDefinitions(jsonSchema.definitions)
+        definitions: addErrorDefinitions(jsonSchema.definitions)
     }
 
     return swaggerSpec

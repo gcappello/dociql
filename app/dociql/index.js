@@ -4,6 +4,7 @@ const url = require('url')
 const fs = require("fs")
 const fetchSchema = require("./fetch-schema")
 const composePaths = require("./compose-paths")
+const { errorDefinitions } = require("./error-definitions");
 
 module.exports = function(specPath, headers) {
     // read spec file content
@@ -13,6 +14,9 @@ module.exports = function(specPath, headers) {
     // fetch graphQL Schema
     const graphUrl = spec.introspection
     const {graphQLSchema, jsonSchema} = fetchSchema(graphUrl, headers)
+
+    // add error definitions to schema
+    const definitions = {...jsonSchema.definitions, ...errorDefinitions};
 
     // parse URL
     const parsedUrl = url.parse(graphUrl)
@@ -33,7 +37,7 @@ module.exports = function(specPath, headers) {
         })),
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
-        definitions: jsonSchema.definitions
+        definitions: definitions
     }
 
     return swaggerSpec

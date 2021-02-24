@@ -4,6 +4,8 @@ const {
     GraphQLList
 } = require("graphql")
 
+const retrieveExampleFromDescription = require('../helpers/exampleFromDescription');
+
 const SCALARS = {
     Int: 'integer',
     Float: 'number',
@@ -77,7 +79,7 @@ function generateQueryInternal(field, expandGraph, arguments, depth, typeCounts 
     };
 }
 
-function generateExampleSchema(name, type, expandGraph, depth) {
+function generateExampleSchema(name, type, expandGraph, depth, example = null) {
     const expandedField = expandGraph.find(_ => _.field == name)
 
     if (depth > 10)
@@ -92,21 +94,24 @@ function generateExampleSchema(name, type, expandGraph, depth) {
             type: "object"
         }
         var fields = type.getFields()
-        var keys = Object.keys(fields);
+        let keys = Object.keys(fields);
         const toExpand = expandGraph.map(_ => _.field)
         const toSelect = expandedField ? expandedField.select : null;
 
         keys = toSelect ? keys.filter(key => toSelect.includes(key) || toExpand.includes(key)) : keys;
 
         result.properties = keys.reduce((p, key) => {
-            var schema = generateExampleSchema(
+            const schema = generateExampleSchema(
                 key,
                 fields[key].type,
                 expandGraph.filter(_=>_ !== expandedField),
-                depth + 1
+                depth + 1,
+                retrieveExampleFromDescription(fields[key].description)
             )
-            if (schema)
+
+            if (schema) {
                 p[key] = schema;
+            }
 
             return p;
         }, {})
@@ -114,16 +119,18 @@ function generateExampleSchema(name, type, expandGraph, depth) {
         return result;
     }
     if (type instanceof GraphQLNonNull)
-        return generateExampleSchema(name, type.ofType, expandGraph, depth + 1);
+        return generateExampleSchema(name, type.ofType, expandGraph, depth + 1, example);
     if (type instanceof GraphQLList) {
-        var schema = generateExampleSchema(name, type.ofType, expandGraph, depth) // do not increment depth
+        const schema = generateExampleSchema(name, type.ofType, expandGraph, depth, example) // do not increment depth
         return schema ? {
             type: 'array',
             items: schema
         } : null;
     }
+
     return {
-        type: SCALARS[type.name]
+        type: SCALARS[type.name],
+        example: example ?? SCALARS[type.name]
     }
 }
 

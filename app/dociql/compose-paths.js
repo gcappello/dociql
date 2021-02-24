@@ -24,11 +24,11 @@ module.exports = function (domains, graphQLSchema) {
         const queryTokens = usecase.query.split(".");
         if (queryTokens.length < 2)
             throw new TypeError(`Domain: ${tag}. Usecase query '${usecase.query}' is not well formed.\nExpected 'query.<fieldName>' or 'mutation.<mutationName>'`)
-        const typeDict = queryTokens[0] == "query" ?
-            graphQLSchema.getQueryType() :
-            graphQLSchema.getMutationType()
 
-        var target = typeDict;
+        let target = queryTokens[0] === "query" ?
+            graphQLSchema.getQueryType() :
+            graphQLSchema.getMutationType();
+
         queryTokens.forEach((token, i) => {
             if (i != 0)
                 target = target.getFields()[token]
@@ -43,12 +43,12 @@ module.exports = function (domains, graphQLSchema) {
             select: selectFields
         })
 
-        var examples = generateExample(queryTokens[0].toLowerCase(), target, expandFields, usecase.errors)
+        const examples = generateExample(queryTokens[0].toLowerCase(), target, expandFields, usecase.errors)
 
         const responseSchema = convertTypeToSchema(target.type);
         responseSchema.example = examples.schema;
 
-        var args = examples.args ? examples.args.map(_ => ({
+        const args = examples.args ? examples.args.map(_ => ({
             name: _.name,
             description: _.description,
             in: "query",
@@ -57,7 +57,7 @@ module.exports = function (domains, graphQLSchema) {
 
         const bodyArg = { in: "body",
             example: examples.query,
-            schema: args.length == 0 ?
+            schema: args.length === 0 ?
                 null :
                 {
                     type: "object",

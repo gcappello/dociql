@@ -4,6 +4,8 @@ const {
     GraphQLList
 } = require("graphql")
 
+const retrieveExampleFromDescription = require('../helpers/exampleFromDescription');
+
 const SCALARS = {
     Int: 'integer',
     Float: 'number',
@@ -75,16 +77,6 @@ function generateQueryInternal(field, expandGraph, arguments, depth, typeCounts 
         query: queryStr + "\n",
         args: fieldArgs
     };
-}
-
-function retrieveExampleFromDescription(description) {
-    let example = null;
-    if (description !== null) {
-        const match = description.match(/@example:[\s]*([\n]*)/);
-        example = match !== null ? match[1] : example;
-    }
-
-    return example;
 }
 
 function generateExampleSchema(name, type, expandGraph, depth, example = null) {

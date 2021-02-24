@@ -31,6 +31,9 @@ See a demo of DociQL in action here: [https://wayfair.github.io/dociql/](https:/
 * **Clean, responsive design**: Responsive HTML5 and CSS3 layout built with [Foundation 6](http://foundation.zurb.com/sites.html) that looks great on all devices and screen sizes.
 * **Embed into your existing website**: An embedded option so that you can generate partial docs without a HTML `<body>` tag for convenient integration into your existing website.
 * **Live preview developer mode**: Development mode that starts a local HTTP server with a file watcher and live reload, so you can preview live changes in your browser as you update your specification.
+* **Examples by tag**: input and response fields can have examples by _@example_ tag in GraphQL description.
+* **Errors list**: Error standard definition and list of possible error codes.
+
 
 ## Usage
 
@@ -83,6 +86,28 @@ Your generated documentation will be located in the `public` directory by defaul
 ### Docker
 
 > Coming soon!
+
+### Tags
+In order to have metadata and increase comprehension, tags are added to the GraphQL description. 
+* Example tag
+  ```graphql
+  input ExampleInput {
+    """
+    Id of the resource
+    @example 53dd8c76-b735-45d1-a9af-ee24f01bfe97
+    """
+    resourceId: ID!
+  }
+  ```
+  
+  Result
+  ```graphql
+  mutation {
+    mutationName(input: {
+      resourceId: "53dd8c76-b735-45d1-a9af-ee24f01bfe97"
+    }
+  }
+  ``` 
 
 ## Configuration Options
 

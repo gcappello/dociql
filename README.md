@@ -32,8 +32,7 @@ See a demo of DociQL in action here: [https://wayfair.github.io/dociql/](https:/
 * **Embed into your existing website**: An embedded option so that you can generate partial docs without a HTML `<body>` tag for convenient integration into your existing website.
 * **Live preview developer mode**: Development mode that starts a local HTTP server with a file watcher and live reload, so you can preview live changes in your browser as you update your specification.
 * **Examples by tag**: input and response fields can have examples by _@example_ tag in GraphQL description.
-* **Errors list**: Error standard definition and list of possible error codes.
-
+* **Error catalogue**: Error catalogue with different codes, messages and descriptions. Config in the yaml file.
 
 ## Usage
 
@@ -74,6 +73,22 @@ domains:
      - name: Invoke Mutation # Mutation 
        description: Markdown enabled description for operation
        query: mutation.mutateSome # Mutation example - invoke mutation
+
+# define your errors byr providing a list
+errorSection:
+  description: "Description example of the error catalogue section"
+  errorCatalogue:
+    - name: SOME_ERROR_CODE
+      messages:
+        - message: First message of the error
+          description: First description of the message
+        - message: Another error message
+          description: Description of the second message
+    - name: ANOTHER_ERROR_CODE
+      messages:
+        - message: Another error code message
+          description: Here explain when can it happen
+
 ```
 ### Pass your `config.yml` document to generate your documentation:
 

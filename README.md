@@ -1,4 +1,4 @@
-# DociQL
+# DociQL (gcappello)
 
 [![npm][npm]][npm-url]
 [![downloads][npm-downloads]][npm-url]
@@ -6,14 +6,15 @@
 [![coverage][cover]][cover-url]
 [![Quality Gate Status][sonar]](sonar-url)
 
-> A nice fork of [Spectacle](http://sourcey.com/spectacle)
+> A fork of [DociQL](https://wayfair.github.io/dociql)
+>> A nice fork of [Spectacle](http://sourcey.com/spectacle)
 
 DociQL generates beautiful static HTML5 documentation from a [GraphQL](https://graphql.org) endpoint using the introspection query.
 
 The goal of DociQL is help you "save time and look good" by providing an extensible platform for auto generating your API documentation. The default layout is a three column single page, similar to those
 employed by [Stripe](https://stripe.com/docs/api) and [Intercom](https://developers.intercom.com/reference).
 
-See a demo of DociQL in action here: [https://wayfair.github.io/dociql/](https://wayfair.github.io/dociql/)
+See a demo of the original DociQL in action here: [https://wayfair.github.io/dociql/](https://wayfair.github.io/dociql/)
 
 ---
 
@@ -74,7 +75,7 @@ domains:
        description: Markdown enabled description for operation
        query: mutation.mutateSome # Mutation example - invoke mutation
 
-# define your errors byr providing a list
+# define your errors by providing a list
 errorSection:
   description: "Description example of the error catalogue section"
   errorCatalogue:

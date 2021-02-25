@@ -1,4 +1,4 @@
-# DociQL (gcappello)
+# DociQL
 
 [![npm][npm]][npm-url]
 [![downloads][npm-downloads]][npm-url]
@@ -6,7 +6,7 @@
 [![coverage][cover]][cover-url]
 [![Quality Gate Status][sonar]](sonar-url)
 
-> A fork of [DociQL](https://wayfair.github.io/dociql)
+> A fork of [DociQL](https://wayfair.github.io/dociql) (v1.1.3)
 >> A nice fork of [Spectacle](http://sourcey.com/spectacle)
 
 DociQL generates beautiful static HTML5 documentation from a [GraphQL](https://graphql.org) endpoint using the introspection query.

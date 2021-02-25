@@ -48,7 +48,7 @@ function convertType(type, example = null) {
     if (type instanceof GraphQLScalarType) {
         return {
             type: SCALARS[type.name],
-            example: example ?? SCALARS[type.name]
+            example: example !== null ? example : SCALARS[type.name]
         };
     }
     

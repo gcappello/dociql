@@ -127,7 +127,7 @@ function generateExampleSchema(name, type, expandGraph, depth, example = null) {
 
     return {
         type: SCALARS[type.name],
-        example: example ?? SCALARS[type.name]
+        example: example !== null ? example : SCALARS[type.name]
     }
 }
 

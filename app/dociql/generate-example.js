@@ -48,9 +48,6 @@ function generateQueryInternal(field, expandGraph, arguments, depth, typeCounts 
 
         if (depth > 1) {
             const typeKey = `${field.name}->${returnType.name}`;
-            if (typeCounts.includes(typeKey)) {
-                subQuery = space + "  ...Recursive" + returnType.name + "Fragment\n"
-            }
             typeCounts.push(typeKey)
         }
 
@@ -61,7 +58,7 @@ function generateQueryInternal(field, expandGraph, arguments, depth, typeCounts 
 
         keys = toSelect ? keys.filter(key => toSelect.includes(key) || toExpand.includes(key)) : keys;
 
-        subQuery = subQuery || keys.map(key => {
+        subQuery = keys.map(key => {
             return generateQueryInternal(
                 childFields[key],
                 expandGraph,

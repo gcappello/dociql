@@ -1,6 +1,6 @@
 {
   "name": "@gcappello/dociql",
-  "version": "1.1.3-gcappello.2",
+  "version": "1.0.0",
   "description": "Generate beautiful static API documentation from GraphQL Schema (Fork of DociQL project)",
   "preferGlobal": true,
   "bin": {
@@ -17,9 +17,6 @@
     "type": "git",
     "url": "git+https://github.com/gcappello/dociql.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/gcappello"
-  },
   "engines": {
     "node": ">=8"
   },
@@ -32,11 +29,11 @@
     "swagger",
     "openapi"
   ],
-  "author": "Dennis Miasoutov <dmiasoutov@wayfair.com>",
+  "author": "Gabriele Cappello <gabriele.cappello@gmail.com>",
   "contributors": [
-    "Gabriele Cappello <gabriele.cappello@gmail.com>",
     "José Luis Cerrada <jcerradabarrios@gmail.com>",
-    "adrianet86 <adria.matoses@gmail.com>"
+    "adrianet86 <adria.matoses@gmail.com>",
+    "Dennis Miasoutov <dmiasoutov@wayfair.com>"
   ],
   "license": "Apache-2.0",
   "bugs": {

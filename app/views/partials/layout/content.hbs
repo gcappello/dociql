@@ -10,6 +10,13 @@
    {{#unless info.x-spectacle-hide}}
     {{>swagger/introduction}}
   {{/unless}}
+
+  {{#if sections}}
+    {{#each sections}}
+       {{>swagger/section section=section}}
+    {{/each}}
+  {{/if}}
+
   {{#unless securityDefinitions.x-spectacle-hide}}
     {{>swagger/securityDefinitions}}
   {{/unless}}

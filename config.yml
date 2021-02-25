@@ -17,6 +17,43 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+sections:
+  - name: Authentication
+    description: |
+      Authentication for registries is handled client side. The client has to send authentication details. These are sent as `X-Registry-Auth` header as a Base64 encoded (JSON) string with the following structure:
+
+      ```
+      {
+        "username": "string",
+        "password": "string",
+        "email": "string",
+        "serveraddress": "string"
+      }
+      ```
+
+      The `serveraddress` is a domain/IP without a protocol. Throughout this structure, double quotes are required.
+
+    example: |
+      Here a code example
+
+      ```
+      {
+        "identitytoken": "9cbaf023786cd7..."
+      }
+      ```
+  - name: Versioning
+    description: |
+      The API is usually changed in each release, so API calls are versioned to ensure that clients don't break.
+
+      The API uses an open schema model, which means server may add extra properties to responses. Likewise, the server will ignore any extra query parameters and request body properties. When you write clients, you need to ignore additional properties in responses to ensure they do not break when talking to newer Docker daemons.
+
+      Silly table c1  | c2 |
+      ----------------|-------------
+      1.12.x | 1.24
+      1.11.x | 1.23
+      1.10.x | 1.22
+
 domains:
   - name: Fetching Pokémons
     description: Base methods to fetch pokemon information.

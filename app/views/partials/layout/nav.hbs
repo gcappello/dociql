@@ -21,6 +21,12 @@
     {{/each}}
   {{/if}}
 
+  {{#if sections}}
+     {{#each sections}}
+        <a href="#section-{{name}}">{{name}}</a>
+     {{/each}}
+  {{/if}}
+
   {{#if showTagSummary}}
     <h5>Operations</h5>
     {{#each tags}}

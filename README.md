@@ -34,6 +34,7 @@ See a demo of the original DociQL in action here: [https://wayfair.github.io/doc
 * **Live preview developer mode**: Development mode that starts a local HTTP server with a file watcher and live reload, so you can preview live changes in your browser as you update your specification.
 * **Examples by tag**: input and response fields can have examples by _@example_ tag in GraphQL description.
 * **Error catalogue**: Error catalogue with different codes, messages and descriptions. Config in the yaml file.
+* **Dynamic sections**: Dynamic sections based in md format with examples.
 
 ## Usage
 
@@ -60,8 +61,30 @@ info: # same format as for OpenAPI Specification
     title: Your API Title
     description: Markdown enabled description of your api.    
     ...
+# define here your dynamic sections 
+sections:
+  - name: Example Section md styles
+    description: |
+      ## Title
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
 
- # define your domains by providing a set of usecases
+      ```
+      {
+        "field": "string",
+        "another_field": "string"
+      }
+      ```
+
+    example: |
+      Here a code example
+
+      ```
+      {
+        "more_fields": "9cbaf023786cd7..."
+      }
+      ```
+ 
+# define your domains by providing a set of usecases
 domains:
   - name: Top Level Menu Section # Name of the domain
     description: Description  # Description of the domain

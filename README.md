@@ -1,4 +1,4 @@
-# DociQL
+# DociQL (gcappello)
 
 [![npm][npm]][npm-url]
 [![downloads][npm-downloads]][npm-url]
@@ -6,14 +6,15 @@
 [![coverage][cover]][cover-url]
 [![Quality Gate Status][sonar]](sonar-url)
 
-> A nice fork of [Spectacle](http://sourcey.com/spectacle)
+> A fork of [DociQL](https://wayfair.github.io/dociql)
+>> A nice fork of [Spectacle](http://sourcey.com/spectacle)
 
 DociQL generates beautiful static HTML5 documentation from a [GraphQL](https://graphql.org) endpoint using the introspection query.
 
 The goal of DociQL is help you "save time and look good" by providing an extensible platform for auto generating your API documentation. The default layout is a three column single page, similar to those
 employed by [Stripe](https://stripe.com/docs/api) and [Intercom](https://developers.intercom.com/reference).
 
-See a demo of DociQL in action here: [https://wayfair.github.io/dociql/](https://wayfair.github.io/dociql/)
+See a demo of the original DociQL in action here: [https://wayfair.github.io/dociql/](https://wayfair.github.io/dociql/)
 
 ---
 
@@ -32,8 +33,7 @@ See a demo of DociQL in action here: [https://wayfair.github.io/dociql/](https:/
 * **Embed into your existing website**: An embedded option so that you can generate partial docs without a HTML `<body>` tag for convenient integration into your existing website.
 * **Live preview developer mode**: Development mode that starts a local HTTP server with a file watcher and live reload, so you can preview live changes in your browser as you update your specification.
 * **Examples by tag**: input and response fields can have examples by _@example_ tag in GraphQL description.
-* **Errors list**: Error standard definition and list of possible error codes.
-
+* **Error catalogue**: Error catalogue with different codes, messages and descriptions. Config in the yaml file.
 
 ## Usage
 
@@ -74,6 +74,22 @@ domains:
      - name: Invoke Mutation # Mutation 
        description: Markdown enabled description for operation
        query: mutation.mutateSome # Mutation example - invoke mutation
+
+# define your errors by providing a list
+errorSection:
+  description: "Description example of the error catalogue section"
+  errorCatalogue:
+    - name: SOME_ERROR_CODE
+      messages:
+        - message: First message of the error
+          description: First description of the message
+        - message: Another error message
+          description: Description of the second message
+    - name: ANOTHER_ERROR_CODE
+      messages:
+        - message: Another error code message
+          description: Here explain when can it happen
+
 ```
 ### Pass your `config.yml` document to generate your documentation:
 

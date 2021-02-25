@@ -27,14 +27,15 @@ module.exports = function(specPath, headers) {
         schemes: [ parsedUrl.protocol.slice(0, -1) ],
         basePath: parsedUrl.pathname,
         externalDocs: spec.externalDocs,
-        tags: spec.domains.map(_ => ({ 
-            name: _.name, 
+        tags: spec.domains.map(_ => ({
+            name: _.name,
             description: _.description,
             externalDocs: _.externalDocs
         })),
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
-        definitions: addErrorDefinitions(jsonSchema.definitions)
+        definitions: addErrorDefinitions(jsonSchema.definitions),
+        errorSection: spec.errorSection
     }
 
     return swaggerSpec

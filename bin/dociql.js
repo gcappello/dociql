@@ -30,13 +30,6 @@ program.version(package.version)
     // .option('-f, --spec-file <file>', 'the input OpenAPI/Swagger spec file (default: test/fixtures/petstore.json)', String, 'test/fixtures/petstore.json')
     .parse(process.argv)
 
-var program = require('commander'),
-    package = require('../package'),
-    spectacle = require('../index.js')
-
-//
-//= Process CLI input
-
 // Show help if no specfile or options are specified
 if (program.args.length < 1) { // && program.rawArgs.length < 1
     program.help()

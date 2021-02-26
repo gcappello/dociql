@@ -1,8 +1,18 @@
 dist: trusty
-sudo: false
 language: node_js
 node_js:
 - 12
 after_success:
 - "./node_modules/.bin/codecov"
+env:
+  global:
+    secure: nQCwosTN3R1kk14vWLTb0GMS69xQ2K0PdapcKL3O3gqNn4xl+ScH8jt9HK2QWeFlzzdn13K4WFQr1za+lQ5spSaHXRlp0epv7O4ekOr2F4SvklTvh/HZMujUd1DefXxxANB1y7pL+AHgrHF9gaDSsZWXZYF8dvCBuClXTEGuahlg7OOJ3DSt1xc0A+8aPucihW4sVtMr769IlkosSXKqQNmA9q4yyjxOQipbxQHRa/xkQxHODFjr0khrwvYMRegwObVUCherhf2IuWpaYtN8myD0Ub1Q1yC4mP8+6TeqE4kLEoHisW1klGUrp1aEdCpwtWtLxV3psXWaFZfhP1Pv3fGzsu2FEve0vKmEaSiF93jKLLO4Y9QR6Bv18dWuysy/L787REI0h4JHr8/4bsxOnaG/ruKrsEqqXWseadugEu6QkTjH1Gbi8dMYFO6WCB6fDPKgIZqJaqRt98Z7MBacANiMVIgpH46kYZa+cSKMZKNRXnGmur6xN/Pyz51nLAsdzjyj+8ZmLqL/oLtU1gQJkXY+nN1PKKCdN6FjWqxOapdjE+zs9nu58XpTtBUCOeQRflEK++nv5TG1Htt8bvzG6gbEH09stbQXFLCfug3XEkiwYPhBUN6SGCPvGBCeA+crtX+FKsRKQA0rwbnyQ84cbMj8sV5tko9mkTcEiVTiRVE=
+addons:
+  sonarcloud:
+    organization: "gcappello"
+    token:
+      secure: "**************************" # encrypted value of your token
 
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner

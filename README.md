@@ -3,6 +3,7 @@
 [![npm][npm]][npm-url]
 [![downloads][npm-downloads]][npm-url]
 [![builds][builds]][builds-url]
+[![coverage][cover]][cover-url]
 
 > A fork of [DociQL](https://wayfair.github.io/dociql) (v1.1.3)
 >> A nice fork of [Spectacle](http://sourcey.com/spectacle)
@@ -251,3 +252,6 @@ Good luck and enjoy DociQL!
 
 [builds]: https://travis-ci.org/gcappello/dociql.svg?branch=master
 [builds-url]: https://travis-ci.org/gcappello/dociql
+
+[cover]: https://codecov.io/gh/gcappello/dociql/branch/master/graph/badge.svg
+[cover-url]: https://app.codecov.io/gh/gcappello/dociql

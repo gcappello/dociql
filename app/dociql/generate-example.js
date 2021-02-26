@@ -78,7 +78,7 @@ function generateQueryInternal(field, expandGraph, arguments, depth, typeCounts 
     };
 }
 
-function generateExampleSchema(name, type, expandGraph, depth, example = null) {
+function generateExampleSchema(name, type, expandGraph, depth, disableExampleValues = false, example = null) {
     const expandedField = expandGraph.find(_ => _.field == name)
 
     if (depth > 10)
@@ -105,7 +105,8 @@ function generateExampleSchema(name, type, expandGraph, depth, example = null) {
                 fields[key].type,
                 expandGraph.filter(_=>_ !== expandedField),
                 depth + 1,
-                retrieveExampleFromDescription(fields[key].description)
+                disableExampleValues,
+                disableExampleValues ? null : retrieveExampleFromDescription(fields[key].description)
             )
 
             if (schema) {
@@ -118,9 +119,9 @@ function generateExampleSchema(name, type, expandGraph, depth, example = null) {
         return result;
     }
     if (type instanceof GraphQLNonNull)
-        return generateExampleSchema(name, type.ofType, expandGraph, depth + 1, example);
+        return generateExampleSchema(name, type.ofType, expandGraph, depth + 1, disableExampleValues, example);
     if (type instanceof GraphQLList) {
-        const schema = generateExampleSchema(name, type.ofType, expandGraph, depth, example) // do not increment depth
+        const schema = generateExampleSchema(name, type.ofType, expandGraph, depth, disableExampleValues, example) // do not increment depth
         return schema ? {
             type: 'array',
             items: schema
@@ -175,9 +176,9 @@ function generateExampleSchemaErrors(errorList) {
     return errors;
 }
 
-function generateQuery(parentType, field, expandGraph, errorList = []) {
+function generateQuery(parentType, field, expandGraph, errorList = [], disableExampleValues = false) {
 
-    const schema = generateExampleSchema(field.name, field.type, expandGraph, 1)
+    const schema = generateExampleSchema(field.name, field.type, expandGraph, 1, disableExampleValues)
     const errors = generateExampleSchemaErrors(errorList);
     const queryResult = generateQueryInternal(
         field,

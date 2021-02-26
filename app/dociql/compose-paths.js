@@ -14,7 +14,7 @@ function getExpandField(expandNotation) {
     return result;
 }
 
-module.exports = function (domains, graphQLSchema) {
+module.exports = function (domains, graphQLSchema, config) {
 
     function composePath(tag, usecase) {
         const result = {}
@@ -43,16 +43,16 @@ module.exports = function (domains, graphQLSchema) {
             select: selectFields
         })
 
-        const examples = generateExample(queryTokens[0].toLowerCase(), target, expandFields, usecase.errors)
+        const examples = generateExample(queryTokens[0].toLowerCase(), target, expandFields, usecase.errors, config.disableExampleValues)
 
-        const responseSchema = convertTypeToSchema(target.type);
+        const responseSchema = convertTypeToSchema(target.type, config.disableExampleValues);
         responseSchema.example = examples.schema;
 
         const args = examples.args ? examples.args.map(_ => ({
             name: _.name,
             description: _.description,
             in: "query",
-            schema: convertTypeToSchema(_.type)
+            schema: convertTypeToSchema(_.type, config.disableExampleValues)
         })) : [];
 
         const bodyArg = { in: "body",

@@ -3,13 +3,9 @@ var common = require('../lib/common')
 
 module.exports = function (value, options) {
     const query = value.example;
-    const variables = null 
-        // value.schema 
-        // ? JSON.stringify(Object.keys(value.schema.properties).reduce((cur, key) => {
-        //     cur[key] = {}
-        //     return cur
-        // }, {})) 
-        // : null
+    const variables = value.schema ?
+        JSON.stringify(common.formatExample(value, options.data.root, options.hash))
+        : null;
 
     const variablesQuery = variables ? `&variables=${encodeURIComponent(variables)}` : ""
 

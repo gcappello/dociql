@@ -1,7 +1,10 @@
 introspection: https://graphql-pokemon2.vercel.app
 servers:
   - url: https://graphql-pokemon2.vercel.app
-    description: Test Server  
+    description: Test Server
+config:
+  # Use example values instead of property types when generating example queries and variables generation
+  useExamples: true
 info:
   description: |
     Welcome to the sample Pokémon API reference. This is a live example of how you can use [DociQL](https://github.com/wayfair/dociql) in conjunction with [GraphQL](https://graphql.org/) to generate beautiful static documentation for your own APIs.

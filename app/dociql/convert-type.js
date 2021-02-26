@@ -41,6 +41,7 @@ function convertType(type, example = null) {
 
         return {
             type: 'object',
+            $ref: `#/definitions/${type.name}`,
             properties
         }
     }

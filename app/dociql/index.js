@@ -36,7 +36,12 @@ module.exports = function(specPath, headers) {
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
         definitions: addErrorDefinitions(jsonSchema.definitions),
-        errorSection: spec.errorSection
+        errorSection: spec.errorSection,
+        config: {
+            // Use example values instead of $ref definitions
+            useExamples: true,
+            ...spec.config
+        }
     }
 
     return swaggerSpec

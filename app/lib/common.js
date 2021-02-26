@@ -51,36 +51,6 @@ var common = {
       '\n</code></pre>\n';
   },
 
-  // formatSchema: function(value) {
-  //   var cloned;
-  //   if (typeof value === 'object' && typeof value.properties === 'object') {
-  //     if (value.example) {
-  //       // Use the supplied example
-  //       value = value.example;
-  //       cloned = _.cloneDeep(value)
-  //     } else {
-  //       // Create json object of keys : type info string
-  //       value = value.properties;
-  //       cloned = _.cloneDeep(value)
-  //       Object.keys(cloned).forEach(function(propName) {
-  //         var prop = cloned[propName];
-  //         if (prop.type) {
-  //           if (prop.example) {
-  //             cloned[propName] = prop.example;
-  //           }
-  //           else {
-  //             cloned[propName] = prop.type;
-  //             if (prop.format) {
-  //               cloned[propName] += ('(' + prop.format + ')')
-  //             }
-  //           }
-  //         }
-  //       })
-  //     }
-  //   }
-  //   return cloned;
-  // },
-
   formatExample: function (value, root, options) {
     if (!value) {
       // throw 'Cannot format NULL object ' + value;
@@ -125,7 +95,7 @@ var common = {
 
     if (ref.example !== undefined) {
       return ref.example;
-    } else if (ref.$ref) {
+    } else if (ref.$ref && (root.config.disableExamples || !('properties' in ref))) {
       var remoteRef = this.resolveSchemaReference(ref.$ref, root)
       if (remoteRef)
         return this.formatExampleProp(remoteRef, root, options)

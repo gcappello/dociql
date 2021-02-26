@@ -15,19 +15,19 @@ const SCALARS = {
     ID: 'string'
 };
 
-function convertType(type, example = null) {
+function convertType(type, disableExampleValues = false, example = null) {
     if (type instanceof GraphQLNonNull)
-        return Object.assign(convertType(type.ofType), {
+        return Object.assign(convertType(type.ofType, disableExampleValues, example), {
             required: true
         });
     if (type instanceof GraphQLList) {        
         return {
             type: 'array',
-            items: convertType(type.ofType)
+            items: convertType(type.ofType, disableExampleValues, example)
         }
     }
 
-    if (type instanceof GraphQLInputObjectType) {
+    if (!disableExampleValues && type instanceof GraphQLInputObjectType) {
         const properties = {};
         const fields = type.getFields();
         const keys = Object.keys(fields);
@@ -35,12 +35,14 @@ function convertType(type, example = null) {
         keys.forEach((key) => {
             properties[key] = convertType(
                 fields[key].type,
+                disableExampleValues,
                 retrieveExampleFromDescription(fields[key].description)
             );
         });
 
         return {
             type: 'object',
+            $ref: `#/definitions/${type.name}`,
             properties
         }
     }

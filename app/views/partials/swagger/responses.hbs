@@ -28,7 +28,11 @@
             <div class="prop-row prop-group">
               <div class="prop-name">
                 {{! Use response-code and http-name as text}}
-                <div class="prop-title">{{@key}} {{httpResponseCode @key}}</div>
+                  {{#if @first}}
+                        <div class="prop-title">{{@key}} {{httpResponseCode @key}}</div>
+                    {{else}}
+                        <div class="prop-title prop-title-error-code">{{@key}}</div>
+                  {{/if}}
                 {{!-- {{#if schema}}
                   <div class="prop-ref">{{>json-schema/reference schema}}</div>
                   <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href="{{$ref}}">{{$ref}}</a></span> -->

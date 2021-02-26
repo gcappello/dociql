@@ -94,6 +94,9 @@ domains:
        query: query.some # Query example - fetching single field
        select: field1 field2 # select only specific sub fields. By default - all are selected
        expand: field3(sub1, sub2, sub3),field4 # go deep by expanding specific fields.
+       errors:
+         - code: UNAUTHENTICATED
+           description: Invalid credentials
      - name: Invoke Mutation # Mutation 
        description: Markdown enabled description for operation
        query: mutation.mutateSome # Mutation example - invoke mutation

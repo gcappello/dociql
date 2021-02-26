@@ -17,6 +17,7 @@ program.version(package.version)
     .option('-d, --development-mode', 'start HTTP server with the file watcher (default: false)')
     .option('-D, --development-mode-live', 'start HTTP server with the file watcher and live reload (default: false)')
     .option('-s, --start-server', 'start the HTTP server without any development features')
+    .option('-de, --disable-example-values', 'Use property types instead of example values when generating example queries and variables (default: false).')
     .option('-p, --port <port>', 'the port number for the HTTP server to listen on (default: 4400)', Number)
     .option('-P, --port-live <port>', 'the port number for the live reload to listen on (default: 4401)', Number)
     .option('-t, --target-dir <dir>', 'the target build directory (default: public)', String)
@@ -28,6 +29,13 @@ program.version(package.version)
     .option('-q, --quiet', 'Silence the output from the generator (default: false)')
     // .option('-f, --spec-file <file>', 'the input OpenAPI/Swagger spec file (default: test/fixtures/petstore.json)', String, 'test/fixtures/petstore.json')
     .parse(process.argv)
+
+var program = require('commander'),
+    package = require('../package'),
+    spectacle = require('../index.js')
+
+//
+//= Process CLI input
 
 // Show help if no specfile or options are specified
 if (program.args.length < 1) { // && program.rawArgs.length < 1

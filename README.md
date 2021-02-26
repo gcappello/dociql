@@ -159,22 +159,23 @@ $ dociql -h
 
   Options:
 
-    -h, --help                   output usage information
-    -H, --header                 specify a custom auth token for the header (default: none)
-    -V, --version                output the version number
-    -C, --disable-css            omit CSS generation (default: false)
-    -J, --disable-js             omit JavaScript generation (default: false)
-    -e, --embeddable             omit the HTML <body/> and generate the documentation content only (default: false)
-    -d, --development-mode       start HTTP server with the file watcher (default: false)
-    -D, --development-mode-live  start HTTP server with the file watcher and live reload (default: false)
-    -s, --start-server           start the HTTP server without any development features
-    -p, --port <port>            the port number for the HTTP server to listen on (default: 4400)
-    -P, --port-live <port>       the port number for the live reload to listen on (default: 4401)
-    -t, --target-dir <dir>       the target build directory (default: public)
-    -f, --target-file <file>     the target build HTML file (default: index.html)
-    -a, --app-dir <dir>          the application source directory (default: app)
-    -l, --logo-file <file>       specify a custom logo file (default: null)
-    -c, --config-file <file>     specify a custom configuration file (default: app/lib/config.js)
+    -h,  --help                     output usage information
+    -H,  --header                   specify a custom auth token for the header (default: none)
+    -V,  --version                  output the version number
+    -C,  --disable-css              omit CSS generation (default: false)
+    -J,  --disable-js               omit JavaScript generation (default: false)
+    -e,  --embeddable               omit the HTML <body/> and generate the documentation content only (default: false)
+    -d,  --development-mode         start HTTP server with the file watcher (default: false)
+    -D,  --development-mode-live    start HTTP server with the file watcher and live reload (default: false)
+    -s,  --start-server             start the HTTP server without any development features
+    -de, --disable-example-values   use property types instead of example values when generating example queries and variables (default: false).
+    -p,  --port <port>              the port number for the HTTP server to listen on (default: 4400)
+    -P,  --port-live <port>         the port number for the live reload to listen on (default: 4401)
+    -t,  --target-dir <dir>         the target build directory (default: public)
+    -f,  --target-file <file>       the target build HTML file (default: index.html)
+    -a,  --app-dir <dir>            the application source directory (default: app)
+    -l,  --logo-file <file>         specify a custom logo file (default: null)
+    -c,  --config-file <file>       specify a custom configuration file (default: app/lib/config.js)
 ```
 
 Most options are self explanatory, but the following options warrant some further explanation:

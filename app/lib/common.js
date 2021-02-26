@@ -95,7 +95,7 @@ var common = {
 
     if (ref.example !== undefined) {
       return ref.example;
-    } else if (ref.$ref && (!root.config.useExamples || !('properties' in ref))) {
+    } else if (ref.$ref && (root.config.disableExamples || !('properties' in ref))) {
       var remoteRef = this.resolveSchemaReference(ref.$ref, root)
       if (remoteRef)
         return this.formatExampleProp(remoteRef, root, options)

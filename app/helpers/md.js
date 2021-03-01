@@ -11,7 +11,6 @@ var common = require('../lib/common')
  */
 module.exports = function(value, options) {
   value = value + ''
-  value = value.replace(/\n/g, '<br/>')
   const html = common.markdown(value, options.hash ? options.hash.stripParagraph : false)
   return new Handlebars.SafeString(html)
 };

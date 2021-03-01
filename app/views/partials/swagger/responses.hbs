@@ -31,7 +31,9 @@
                   {{#if @first}}
                         <div class="prop-title">{{@key}} {{httpResponseCode @key}}</div>
                     {{else}}
-                        <div class="prop-title prop-title-error-code">{{@key}}</div>
+                        <div class="prop-title prop-title-error-code">
+                            <a href="#error-{{@key}}">{{@key}}</a>
+                        </div>
                   {{/if}}
                 {{!-- {{#if schema}}
                   <div class="prop-ref">{{>json-schema/reference schema}}</div>

@@ -54,6 +54,12 @@
 
 .prop-title-error-code {
   color: #cc4b37;
+  a {
+    color: #cc4b37;
+    &:hover {
+      color: darkred;
+    }
+  }
 }
 
 .prop-error-message {

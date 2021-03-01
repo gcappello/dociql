@@ -9,11 +9,11 @@ addons:
     organization: "gcappello"
     token:
       secure: "UcA4FN4PM4O4KYGIbnjr8cSYyv4ou7BWbMgRtQTdv1z/TwHTndbdlVa4Aw7rs67llIMywxWiyJIHsrgwHFBH6GqHx7n2sPt4cPki6+jmlEl0ADqrd3IFS5RsLwWUO/mPeqO6wu9NpFDTxA5Lg6ak2mL58Rc2RCk4KNSSc0YL8oMuw2D4LdRD1MLD4H6usL86G0Kitfnn/Xm905ElfUAkNtKmZaSq1ogwBhZN/WCZC7ITzDqfgHx0JD8V71023aBtr0tG2uDHHCtF/dAtTmy0gQEo6OfNKIiFy3UpTnQPSJO6CLCKvn5xb4aDVUcsuNKfqynt2ODJcjig01/UKefEqRqVWsJnOpB0K+Jh8hQcbZBw1wJ91QoNMtAHq52G0ExohePt1O4c9nRPovkIPDWjSqHpQ1OyIrS4+Lm1AQ/BiWp5M9gyLpfZlTi2CSvXr8SVsDJISuJ+cEkvRENokcT8IkoVl47WfoOkIkkYwMGZv7DiWq+kvasRWzdR6k//AaJLbbvmJmjWwcaFIAi6ABogOgUUBNbJnqvhy7l5u3LpZoqmU5cVMUwpA6P2ll2XuEVch1Ect+U5zoUPrFAcDUuAoIiFxhGotAUFoiOFFSHtN4FurK40WwYNmrESfr9zHo6FwvoE7sF3d64d2dLCfrPDccs8Ennpk0CN36igx70ZfJw="
-install:
-  - npm install
-script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - sonar-scanner
+#install:
+#  - npm install
+#script:
+#  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+#  - sonar-scanner
 cache:
   directories:
     - '$HOME/.sonar/cache'

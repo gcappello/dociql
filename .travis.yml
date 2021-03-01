@@ -1,16 +1,21 @@
 dist: trusty
-sudo: false
 language: node_js
 node_js:
 - 12
 after_success:
 - "./node_modules/.bin/codecov"
-deploy:
-  provider: npm
-  email: opensource@wayfair.com
-  api_key:
-    secure: EP1QvdDYjS8si7BpTs96Uz/atftKJVKyFTgh+WSKLcLjRt4boCSJvEZ49EgAG9OWy4NU2I1CDyK0Z7Illrd6rPfWipJdLUFZjlKQoeG0zymCM7Xe+UdK/sD4ODQsC1N1OfssaMFO1JDT4LWJxPZyycIoaXaJW2pnzoNVbkHzhBMNRT04KnJY4d6YXzNQr2bKUlyR2n1EkJA9Hdhhph9WNwS0agH0ddWJbJL4rIoAvWmbITqvuUhH+o6M9I9xlG25r5q3SMT4z7G5HRJt9KTirflUiJQgfOoFzJe9hVDH78HHAClBcBwnHYKNs5eo0R9iZmCOcLRTvP+v5rETB7VjV09kWq1QY7PapZduT8sCZqOCLiIVJo68bZ3RvS8AbSGUAiMMiwlfIGJcJCPTwnujUrnsigNcd0n/uL4XEYxOY5gRBBw62DktzuHglY9xWRFKWltId0kwP9jIaKGgQnAYJCfGV145injRiyTJGB+T9GBmydvEPl9L49eBNWDbg5c5oUQ7Gn4SXwXPY7GeCKjAL8t+0NcMif7xW88ot8lezc0HDPP+pRCTbhDM0smew9uMQlZFFCQLgR1PCmNBdPhhCJfmNkpskXj6HA3/eOGxThkoid+4k7gdF9gVriDIpW79XPctofxLI1taeo/BHyrejr3YBTFISLSGSWGZjPMvvLo=
-  on:
-    tags: true
-    repo: wayfair/dociql
-    branch: master
+
+
+#addons:
+#  sonarcloud:
+#    organization: "gcappello"
+#    token:
+#      secure: "UcA4FN4PM4O4KYGIbnjr8cSYyv4ou7BWbMgRtQTdv1z/TwHTndbdlVa4Aw7rs67llIMywxWiyJIHsrgwHFBH6GqHx7n2sPt4cPki6+jmlEl0ADqrd3IFS5RsLwWUO/mPeqO6wu9NpFDTxA5Lg6ak2mL58Rc2RCk4KNSSc0YL8oMuw2D4LdRD1MLD4H6usL86G0Kitfnn/Xm905ElfUAkNtKmZaSq1ogwBhZN/WCZC7ITzDqfgHx0JD8V71023aBtr0tG2uDHHCtF/dAtTmy0gQEo6OfNKIiFy3UpTnQPSJO6CLCKvn5xb4aDVUcsuNKfqynt2ODJcjig01/UKefEqRqVWsJnOpB0K+Jh8hQcbZBw1wJ91QoNMtAHq52G0ExohePt1O4c9nRPovkIPDWjSqHpQ1OyIrS4+Lm1AQ/BiWp5M9gyLpfZlTi2CSvXr8SVsDJISuJ+cEkvRENokcT8IkoVl47WfoOkIkkYwMGZv7DiWq+kvasRWzdR6k//AaJLbbvmJmjWwcaFIAi6ABogOgUUBNbJnqvhy7l5u3LpZoqmU5cVMUwpA6P2ll2XuEVch1Ect+U5zoUPrFAcDUuAoIiFxhGotAUFoiOFFSHtN4FurK40WwYNmrESfr9zHo6FwvoE7sF3d64d2dLCfrPDccs8Ennpk0CN36igx70ZfJw="
+#install:
+#  - npm install
+#script:
+#  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+#  - sonar-scanner
+#cache:
+#  directories:
+#    - '$HOME/.sonar/cache'

@@ -21,6 +21,8 @@
         <nav id="nav" role="navigation">
           <h5>Topics</h5>
           <a href="#introduction">Introduction</a>
+          <a href="#section-Authentication">Authentication</a>
+          <a href="#section-Versioning">Versioning</a>
           <h5>Operations</h5>
           <section>
             <a href="#tag-Fetching-Pok-mons">Fetching Pokémons</a>
@@ -44,12 +46,24 @@
               </li>
             </ul>
           </section>
+          <a href="#errorCatalogue">
+            <h5>Error Catalogue</h5>
+          </a>
           <h5>Schema Definitions</h5>
-          <a href="#definition-Pokemon"> Pokemon </a>
-          <a href="#definition-PokemonDimension"> PokemonDimension </a>
-          <a href="#definition-PokemonAttack"> PokemonAttack </a>
           <a href="#definition-Attack"> Attack </a>
+          <a href="#definition-Boolean"> Boolean </a>
+          <a href="#definition-Error"> Error </a>
+          <a href="#definition-ErrorCode"> ErrorCode </a>
+          <a href="#definition-ErrorExtensions"> ErrorExtensions </a>
+          <a href="#definition-Errors"> Errors </a>
+          <a href="#definition-Float"> Float </a>
+          <a href="#definition-ID"> ID </a>
+          <a href="#definition-Int"> Int </a>
+          <a href="#definition-Pokemon"> Pokemon </a>
+          <a href="#definition-PokemonAttack"> PokemonAttack </a>
+          <a href="#definition-PokemonDimension"> PokemonDimension </a>
           <a href="#definition-PokemonEvolutionRequirement"> PokemonEvolutionRequirement </a>
+          <a href="#definition-String"> String </a>
         </nav>
       </div>
       <div id="docs" class="row collapse expanded drawer" data-drawer>
@@ -90,6 +104,55 @@ https://graphql-pokemon2.vercel.app
               </div>
             </div>
           </div>
+          <h1 id="section-Authentication" class="swagger-summary-tag" data-traverse-target="section-Authentication">Authentication</h1>
+          <div class="doc-row">
+            <div class="doc-copy">
+              <p>Authentication for registries is handled client side. The client has to send authentication details. These are sent as <code>X-Registry-Auth</code> header as a Base64 encoded (JSON) string with the following structure:</p> <pre><code class="hljs">{
+  <span class="hljs-attr">"username"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"password"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"email"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"serveraddress"</span>: <span class="hljs-string">"string"</span>
+}
+</code></pre>
+              <p>The <code>serveraddress</code> is a domain/IP without a protocol. Throughout this structure, double quotes are required.</p>
+            </div>
+            <div class="doc-examples">
+              <section>
+                <p>Here a code example</p> <pre><code class="hljs">{
+  <span class="hljs-attr">"identitytoken"</span>: <span class="hljs-string">"9cbaf023786cd7..."</span>
+}
+</code></pre> </section>
+            </div>
+          </div>
+          <h1 id="section-Versioning" class="swagger-summary-tag" data-traverse-target="section-Versioning">Versioning</h1>
+          <div class="doc-row">
+            <div class="doc-copy">
+              <p>The API is usually changed in each release, so API calls are versioned to ensure that clients don&#39;t break.</p>
+              <p>The API uses an open schema model, which means server may add extra properties to responses. Likewise, the server will ignore any extra query parameters and request body properties. When you write clients, you need to ignore additional properties in responses to ensure they do not break when talking to newer Docker daemons.</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Silly table c1</th>
+                    <th>c2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1.12.x</td>
+                    <td>1.24</td>
+                  </tr>
+                  <tr>
+                    <td>1.11.x</td>
+                    <td>1.23</td>
+                  </tr>
+                  <tr>
+                    <td>1.10.x</td>
+                    <td>1.22</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
           <h1 id="tag-Fetching-Pok-mons" class="swagger-summary-tag" data-traverse-target="tag-Fetching-Pok-mons">Fetching Pokémons</h1>
           <div class="tag-description doc-row">
             <div class="doc-copy">
@@ -117,17 +180,7 @@ https://graphql-pokemon2.vercel.app
             </div>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body">
-                  <section class="json-schema-properties">
-                    <dl>
-                      <dt data-property-name="first">
-                        <span class="json-property-name">first:</span>
-                        <div class="json-property-type">integer</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                    </dl>
-                  </section>
-                </section>
+                <section class="swagger-request-body"> </section>
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
@@ -290,22 +343,7 @@ https://graphql-pokemon2.vercel.app
             </div>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body">
-                  <section class="json-schema-properties">
-                    <dl>
-                      <dt data-property-name="id">
-                        <span class="json-property-name">id:</span>
-                        <div class="json-property-type">string</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                      <dt data-property-name="name">
-                        <span class="json-property-name">name:</span>
-                        <div class="json-property-type">string</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                    </dl>
-                  </section>
-                </section>
+                <section class="swagger-request-body"> </section>
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
@@ -486,22 +524,7 @@ https://graphql-pokemon2.vercel.app
             </div>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body">
-                  <section class="json-schema-properties">
-                    <dl>
-                      <dt data-property-name="id">
-                        <span class="json-property-name">id:</span>
-                        <div class="json-property-type">string</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                      <dt data-property-name="name">
-                        <span class="json-property-name">name:</span>
-                        <div class="json-property-type">string</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                    </dl>
-                  </section>
-                </section>
+                <section class="swagger-request-body"> </section>
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
@@ -664,22 +687,7 @@ https://graphql-pokemon2.vercel.app
             </div>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body">
-                  <section class="json-schema-properties">
-                    <dl>
-                      <dt data-property-name="id">
-                        <span class="json-property-name">id:</span>
-                        <div class="json-property-type">string</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                      <dt data-property-name="name">
-                        <span class="json-property-name">name:</span>
-                        <div class="json-property-type">string</div>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                    </dl>
-                  </section>
-                </section>
+                <section class="swagger-request-body"> </section>
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
@@ -830,7 +838,445 @@ https://graphql-pokemon2.vercel.app
               </div>
             </div>
           </div>
+          <h1 id="errorCatalogue">Error catalogue</h1>
+          <div class="doc-row">
+            <div class="doc-copy">
+              <section class="json-schema-description"> Description example of the error catalogue section </section>
+            </div>
+          </div>
+          <div class="doc-row">
+            <div class="doc-copy">
+              <section class="swagger-error-catalogue">
+                <div class="prop-row prop-group">
+                  <div id="error-UNAUTHENTICATED" class="prop-title prop-error-code">&lt;UNAUTHENTICATED&gt;</div>
+                </div>
+                <div class="prop-row prop-inner">
+                  <div class="prop-value prop-error-message">
+                    <p>Invalid credentials</p>
+                  </div>
+                  <div class="prop-value prop-error-description">
+                    <p>The token is not a valid JWT.</p>
+                  </div>
+                </div>
+                <div class="prop-row prop-inner">
+                  <div class="prop-value prop-error-message">
+                    <p>Missing credentials</p>
+                  </div>
+                  <div class="prop-value prop-error-description">
+                    <p>The token was not found in the Authorization header.</p>
+                  </div>
+                </div>
+                <div class="prop-row prop-inner">
+                  <div class="prop-value prop-error-message">
+                    <p>Invalid user</p>
+                  </div>
+                  <div class="prop-value prop-error-description">
+                    <p>The user id is not defined within the token payload.</p>
+                  </div>
+                </div>
+                <div class="prop-row prop-group">
+                  <div id="error-BAD_USER_INPUT" class="prop-title prop-error-code">&lt;BAD_USER_INPUT&gt;</div>
+                </div>
+                <div class="prop-row prop-inner">
+                  <div class="prop-value prop-error-message">
+                    <p>The user e-mail is not valid</p>
+                  </div>
+                  <div class="prop-value prop-error-description">
+                    <p>User invalid e-mail address.</p>
+                  </div>
+                </div>
+                <div class="prop-row prop-group">
+                  <div id="error-USER_NOT_FOUND" class="prop-title prop-error-code">&lt;USER_NOT_FOUND&gt;</div>
+                </div>
+                <div class="prop-row prop-inner">
+                  <div class="prop-value prop-error-message">
+                    <p>Unknown error</p>
+                  </div>
+                  <div class="prop-value prop-error-description">
+                    <p>UNKNOWN_ERROR</p>
+                  </div>
+                </div>
+                <div class="prop-row prop-group">
+                  <div id="error-SERVICE_TEMPORARILY_UNAVAILABLE" class="prop-title prop-error-code">&lt;SERVICE_TEMPORARILY_UNAVAILABLE&gt;</div>
+                </div>
+                <div class="prop-row prop-inner">
+                  <div class="prop-value prop-error-message">
+                    <p>Service temporarily unavailable</p>
+                  </div>
+                  <div class="prop-value prop-error-description">
+                    <p>The PaaS platform has problems.</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="doc-examples">
+              <section>
+                <h5>Example</h5> <pre><code class="hljs language-json">{
+  <span class="hljs-attr">"errors"</span>: [
+    {
+      <span class="hljs-attr">"message"</span>: <span class="hljs-string">"This a sample message"</span>,
+      <span class="hljs-attr">"extensions"</span>: {
+        <span class="hljs-attr">"code"</span>: <span class="hljs-string">"ERROR_CODE"</span>
+      }
+    }
+  ]
+}
+</code></pre> </section>
+            </div>
+          </div>
           <h1>Schema Definitions</h1>
+          <div id="definition-Attack" class="definition panel" data-traverse-target="definition-Attack">
+            <h2 class="panel-title">
+              <a name="/definitions/Attack"></a>Attack: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>Represents a Pokémon&#39;s attack types</p>
+                </section>
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="name" class="has-description">
+                      <span class="json-property-name">name:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The name of this Pokémon attack</p>
+                    </dd>
+                    <dt data-property-name="type" class="has-description">
+                      <span class="json-property-name">type:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The type of this Pokémon attack</p>
+                    </dd>
+                    <dt data-property-name="damage" class="has-description">
+                      <span class="json-property-name">damage:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-number">
+                          <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The damage of this Pokémon attack</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;damage&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Boolean" class="definition panel" data-traverse-target="definition-Boolean">
+            <h2 class="panel-title">
+              <a name="/definitions/Boolean"></a>Boolean: boolean
+              <!-- <span class="json-property-type"><div class="json-property-type">boolean</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>The <code>Boolean</code> scalar type represents <code>true</code> or <code>false</code>.</p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">boolean</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Error" class="definition panel" data-traverse-target="definition-Error">
+            <h2 class="panel-title">
+              <a name="/definitions/Error"></a>Error: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="message">
+                      <span class="json-property-name">message:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="extensions">
+                      <span class="json-property-name">extensions:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/ErrorExtensions">ErrorExtensions</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;extensions&quot;</span>: {
+    <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ErrorCode" class="definition panel" data-traverse-target="definition-ErrorCode">
+            <h2 class="panel-title">
+              <a name="/definitions/ErrorCode"></a>ErrorCode: string
+              <!-- <span class="json-property-type"><div class="json-property-type">  <div class="json-schema-ref-string">
+                  <a class="json-schema-ref" href="#/definitions/String">String</a>
+                </div>
+              </div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <div class="json-schema-ref-string">
+                  <a class="json-schema-ref" href="#/definitions/String">String</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ErrorExtensions" class="definition panel" data-traverse-target="definition-ErrorExtensions">
+            <h2 class="panel-title">
+              <a name="/definitions/ErrorExtensions"></a>ErrorExtensions: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="code">
+                      <span class="json-property-name">code:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/ErrorCode">ErrorCode</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Errors" class="definition panel" data-traverse-target="definition-Errors">
+            <h2 class="panel-title">
+              <a name="/definitions/Errors"></a>Errors: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="errors">
+                      <span class="json-property-name">errors:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;errors&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;extensions&quot;</span>: {
+        <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    }
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Float" class="definition panel" data-traverse-target="definition-Float">
+            <h2 class="panel-title">
+              <a name="/definitions/Float"></a>Float: number
+              <!-- <span class="json-property-type"><div class="json-property-type">number</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>The <code>Float</code> scalar type represents signed double-precision fractional values as specified by
+                    <a href="http://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754</a>. </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">number</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ID" class="definition panel" data-traverse-target="definition-ID">
+            <h2 class="panel-title">
+              <a name="/definitions/ID"></a>ID: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>The <code>ID</code> scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as <code>&quot;4&quot;</code>) or integer (such as <code>4</code>) input value will be accepted as an ID.</p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">object</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Int" class="definition panel" data-traverse-target="definition-Int">
+            <h2 class="panel-title">
+              <a name="/definitions/Int"></a>Int: number
+              <!-- <span class="json-property-type"><div class="json-property-type">number</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>The <code>Int</code> scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">number</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
           <div id="definition-Pokemon" class="definition panel" data-traverse-target="definition-Pokemon">
             <h2 class="panel-title">
               <a name="/definitions/Pokemon"></a>Pokemon: object
@@ -849,7 +1295,11 @@ https://graphql-pokemon2.vercel.app
                   <dl>
                     <dt data-property-name="id" class="has-description">
                       <span class="json-property-name">id:</span>
-                      <div class="json-property-type">object</div>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/ID">ID</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                       <span class="json-property-required"></span>
                     </dt>
@@ -858,7 +1308,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="number" class="has-description">
                       <span class="json-property-name">number:</span>
-                      <div class="json-property-type">string</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -866,7 +1320,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="name" class="has-description">
                       <span class="json-property-name">name:</span>
-                      <div class="json-property-type">string</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -898,7 +1356,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="classification" class="has-description">
                       <span class="json-property-name">classification:</span>
-                      <div class="json-property-type">string</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -906,7 +1368,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="types" class="has-description">
                       <span class="json-property-name">types:</span>
-                      <div class="json-property-type">string[]</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -914,7 +1380,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="resistant" class="has-description">
                       <span class="json-property-name">resistant:</span>
-                      <div class="json-property-type">string[]</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -934,7 +1404,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="weaknesses" class="has-description">
                       <span class="json-property-name">weaknesses:</span>
-                      <div class="json-property-type">string[]</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -942,12 +1416,20 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="fleeRate">
                       <span class="json-property-name">fleeRate:</span>
-                      <div class="json-property-type">number</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-number">
+                          <a class="json-schema-ref" href="#/definitions/Float">Float</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dt data-property-name="maxCP" class="has-description">
                       <span class="json-property-name">maxCP:</span>
-                      <div class="json-property-type">number</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-number">
+                          <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -979,7 +1461,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="maxHP" class="has-description">
                       <span class="json-property-name">maxHP:</span>
-                      <div class="json-property-type">number</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-number">
+                          <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -987,7 +1473,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="image">
                       <span class="json-property-name">image:</span>
-                      <div class="json-property-type">string</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                   </dl>
@@ -1000,6 +1490,7 @@ https://graphql-pokemon2.vercel.app
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
   <span class="hljs-attr">&quot;number&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;weight&quot;</span>: {
@@ -1040,6 +1531,7 @@ https://graphql-pokemon2.vercel.app
   <span class="hljs-attr">&quot;maxCP&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
   <span class="hljs-attr">&quot;evolutions&quot;</span>: [
     {
+      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
       <span class="hljs-attr">&quot;number&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;weight&quot;</span>: {
@@ -1067,104 +1559,12 @@ https://graphql-pokemon2.vercel.app
         ],
         <span class="hljs-attr">&quot;special&quot;</span>: [
           {
-            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-            <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-            <span class="hljs-attr">&quot;damage&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>
+            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
           }
         ]
-      },
-      <span class="hljs-attr">&quot;weaknesses&quot;</span>: [
-        <span class="hljs-string">&quot;string&quot;</span>
-      ],
-      <span class="hljs-attr">&quot;fleeRate&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
-      <span class="hljs-attr">&quot;maxCP&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
-      <span class="hljs-attr">&quot;evolutions&quot;</span>: [
-        {
-          <span class="hljs-attr">&quot;number&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-          <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-          <span class="hljs-attr">&quot;weight&quot;</span>: {
-            <span class="hljs-attr">&quot;minimum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-            <span class="hljs-attr">&quot;maximum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-          },
-          <span class="hljs-attr">&quot;height&quot;</span>: {
-            <span class="hljs-attr">&quot;minimum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-            <span class="hljs-attr">&quot;maximum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-          },
-          <span class="hljs-attr">&quot;classification&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-          <span class="hljs-attr">&quot;types&quot;</span>: [
-            <span class="hljs-string">&quot;string&quot;</span>
-          ],
-          <span class="hljs-attr">&quot;resistant&quot;</span>: [
-            <span class="hljs-string">&quot;string&quot;</span>
-          ],
-          <span class="hljs-attr">&quot;attacks&quot;</span>: {
-            <span class="hljs-attr">&quot;fast&quot;</span>: [
-              {
-                <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-                <span class="hljs-attr">&quot;damage&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>
-              }
-            ],
-            <span class="hljs-attr">&quot;special&quot;</span>: [
-              <span class="hljs-literal">null</span>
-            ]
-          }
-        }
-      ]
+      }
     }
   ]
-}
-</code></pre> </body>
-                  </html>
-                  <!-- </div> -->
-                </section>
-              </div>
-            </div>
-          </div>
-          <div id="definition-PokemonDimension" class="definition panel" data-traverse-target="definition-PokemonDimension">
-            <h2 class="panel-title">
-              <a name="/definitions/PokemonDimension"></a>PokemonDimension: object
-              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-description">
-                  <p>Represents a Pokémon&#39;s dimensions</p>
-                </section>
-                <section class="json-schema-properties">
-                  <dl>
-                    <dt data-property-name="minimum" class="has-description">
-                      <span class="json-property-name">minimum:</span>
-                      <div class="json-property-type">string</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <p>The minimum value of this dimension</p>
-                    </dd>
-                    <dt data-property-name="maximum" class="has-description">
-                      <span class="json-property-name">maximum:</span>
-                      <div class="json-property-type">string</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <p>The maximum value of this dimension</p>
-                    </dd>
-                  </dl>
-                </section>
-              </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Example</h5>
-                  <!-- <div class="hljs"> -->
-                  <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;minimum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;maximum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre> </body>
                   </html>
@@ -1245,9 +1645,9 @@ https://graphql-pokemon2.vercel.app
               </div>
             </div>
           </div>
-          <div id="definition-Attack" class="definition panel" data-traverse-target="definition-Attack">
+          <div id="definition-PokemonDimension" class="definition panel" data-traverse-target="definition-PokemonDimension">
             <h2 class="panel-title">
-              <a name="/definitions/Attack"></a>Attack: object
+              <a name="/definitions/PokemonDimension"></a>PokemonDimension: object
               <!-- <span class="json-property-type"><div class="json-property-type">object</div>
               <span class="json-property-range" title="Value limits"></span>
               
@@ -1257,33 +1657,33 @@ https://graphql-pokemon2.vercel.app
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Represents a Pokémon&#39;s attack types</p>
+                  <p>Represents a Pokémon&#39;s dimensions</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="name" class="has-description">
-                      <span class="json-property-name">name:</span>
-                      <div class="json-property-type">string</div>
+                    <dt data-property-name="minimum" class="has-description">
+                      <span class="json-property-name">minimum:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
-                      <p>The name of this Pokémon attack</p>
+                      <p>The minimum value of this dimension</p>
                     </dd>
-                    <dt data-property-name="type" class="has-description">
-                      <span class="json-property-name">type:</span>
-                      <div class="json-property-type">string</div>
+                    <dt data-property-name="maximum" class="has-description">
+                      <span class="json-property-name">maximum:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
-                      <p>The type of this Pokémon attack</p>
-                    </dd>
-                    <dt data-property-name="damage" class="has-description">
-                      <span class="json-property-name">damage:</span>
-                      <div class="json-property-type">number</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <p>The damage of this Pokémon attack</p>
+                      <p>The maximum value of this dimension</p>
                     </dd>
                   </dl>
                 </section>
@@ -1295,9 +1695,8 @@ https://graphql-pokemon2.vercel.app
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;damage&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>
+  <span class="hljs-attr">&quot;minimum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;maximum&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre> </body>
                   </html>
@@ -1324,7 +1723,11 @@ https://graphql-pokemon2.vercel.app
                   <dl>
                     <dt data-property-name="amount" class="has-description">
                       <span class="json-property-name">amount:</span>
-                      <div class="json-property-type">number</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-number">
+                          <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -1332,7 +1735,11 @@ https://graphql-pokemon2.vercel.app
                     </dd>
                     <dt data-property-name="name" class="has-description">
                       <span class="json-property-name">name:</span>
-                      <div class="json-property-type">string</div>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dd>
@@ -1358,10 +1765,27 @@ https://graphql-pokemon2.vercel.app
               </div>
             </div>
           </div>
+          <div id="definition-String" class="definition panel" data-traverse-target="definition-String">
+            <h2 class="panel-title">
+              <a name="/definitions/String"></a>String: string
+              <!-- <span class="json-property-type"><div class="json-property-type">string</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>The <code>String</code> scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.</p>
+                </section>
+              </div>
+            </div>
+          </div>
           <div class="doc-row no-margin">
             <div class="doc-copy doc-separator">
-              <a class="powered-by" href="https://github.com/wayfair/dociql">Documentation by
-                <span>DociQL</span>
+              <a class="powered-by" href="https://github.com/gcappello/dociql">Documentation by
+                <span>DociQL (gcappello)</span>
               </a>
             </div>
           </div>

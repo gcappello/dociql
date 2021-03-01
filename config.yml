@@ -61,7 +61,10 @@ domains:
      - name: Fetch Pokémons
        description: Query list of Pokémon
        query: query.pokemons
-       expand: weight,height       
+       expand: weight,height
+       errors:
+         - code: USER_NOT_FOUND
+           description: User not found
      - name: Fetch single Pokémon
        description: Query any Pokémon by number or name
        query: query.pokemon

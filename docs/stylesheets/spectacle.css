@@ -32,6 +32,29 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     color: #f68b1f;
     text-transform: uppercase;
     font-size: 0.9rem; }
+  #spectacle .swagger-error-catalogue:before {
+    content: "Codes";
+    display: block;
+    margin-bottom: 0.5em;
+    color: #f68b1f;
+    text-transform: uppercase;
+    font-size: 0.9rem; }
+  #spectacle .prop-error-code {
+    color: #cc4b37;
+    font-weight: normal !important;
+    font-size: 1.1em;
+    font-family: monospace;
+    width: 40%;
+    float: left;
+    text-align: right; }
+  #spectacle .prop-error-message {
+    width: 40% !important;
+    text-align: right;
+    font-family: Courier, monospace; }
+  #spectacle .prop-error-description {
+    width: 60% !important;
+    text-align: left;
+    color: #8a8a8a; }
   #spectacle .swagger-request-body:before {
     content: "";
     display: block;

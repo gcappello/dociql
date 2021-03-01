@@ -251,15 +251,15 @@ All contributions are welcome.
 
 Good luck and enjoy DociQL!
 
-[npm]: https://img.shields.io/npm/v/dociql.svg
-[npm-downloads]: https://img.shields.io/npm/dw/dociql
-[npm-url]: https://www.npmjs.com/package/dociql
+[npm]: https://img.shields.io/npm/v/@gcappello/dociql
+[npm-downloads]: https://img.shields.io/npm/dw/@gcappello/dociql
+[npm-url]: https://www.npmjs.com/package/@gcappello/dociql
 
-[builds]: https://travis-ci.org/wayfair/dociql.svg?branch=master
-[builds-url]: https://travis-ci.org/wayfair/dociql
+[builds]: https://travis-ci.org/gcappello/dociql.svg?branch=master
+[builds-url]: https://travis-ci.org/gcappello/dociql
 
-[cover]: https://codecov.io/gh/wayfair/dociql/branch/master/graph/badge.svg
-[cover-url]: https://codecov.io/gh/wayfair/dociql
+[cover]: https://codecov.io/gh/gcappello/dociql/branch/master/graph/badge.svg
+[cover-url]: https://app.codecov.io/gh/gcappello/dociql
 
-[sonar]: https://sonarcloud.io/api/project_badges/measure?project=wayfair_dociql&metric=alert_status
-[sonar-url]: https://sonarcloud.io/dashboard?id=wayfair_dociql
+[sonar]: https://sonarcloud.io/api/project_badges/measure?project=gcappello_dociql&metric=alert_status
+[sonar-url]: https://sonarcloud.io/dashboard?id=gcappello_dociql

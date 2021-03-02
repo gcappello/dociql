@@ -4,7 +4,7 @@
 [![downloads][npm-downloads]][npm-url]
 [![builds][builds]][builds-url]
 [![coverage][cover]][cover-url]
-[![Quality Gate Status][sonar]](sonar-url)
+[![Quality Gate Status][sonar]][sonar-url]
 
 > A fork of [DociQL](https://wayfair.github.io/dociql) (v1.1.3)
 >> A nice fork of [Spectacle](http://sourcey.com/spectacle)
@@ -41,7 +41,7 @@ See a demo of the original DociQL in action here: [https://wayfair.github.io/doc
 ### Install DociQL from `npm`:
 
 ```bash
-npm install -g dociql
+npm install -g @gcappello/dociql
 ```
 
 
@@ -136,7 +136,8 @@ In order to have metadata and increase comprehension, tags are added to the Grap
   input ExampleInput {
     """
     Id of the resource
-    @example 53dd8c76-b735-45d1-a9af-ee24f01bfe97
+  
+    @example: "53dd8c76-b735-45d1-a9af-ee24f01bfe97"
     """
     resourceId: ID!
   }
@@ -243,7 +244,9 @@ DociQL is licensed under the Apache License 2.0 – see the [LICENSE.md](https:/
 
 ## More Information
 
-More info is available on the [DociQL homepage](https://github.com/wayfair/dociql).
+Fork project in [GitHub](https://github.com/gcappello/dociql).
+
+More info is available on the original [DociQL homepage](https://github.com/wayfair/dociql).
 
 Please use the [GitHub issue tracker](https://github.com/sourcey/spectacle/issues) if you have any ideas or bugs to report.
 
@@ -252,7 +255,7 @@ All contributions are welcome.
 Good luck and enjoy DociQL!
 
 [npm]: https://img.shields.io/npm/v/@gcappello/dociql
-[npm-downloads]: https://img.shields.io/npm/dw/@gcappello/dociql
+[npm-downloads]: https://img.shields.io/npm/dt/@gcappello/dociql
 [npm-url]: https://www.npmjs.com/package/@gcappello/dociql
 
 [builds]: https://travis-ci.org/gcappello/dociql.svg?branch=master

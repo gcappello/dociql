@@ -124,7 +124,8 @@ function generateExampleSchema(name, type, expandGraph, depth, disableExampleVal
         const schema = generateExampleSchema(name, type.ofType, expandGraph, depth, disableExampleValues, example) // do not increment depth
         return schema ? {
             type: 'array',
-            items: schema
+            items: schema,
+            example: example !== null ? example : SCALARS[type.name]
         } : null;
     }
 

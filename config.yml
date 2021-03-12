@@ -46,7 +46,7 @@ sections:
     description: |
       The API is usually changed in each release, so API calls are versioned to ensure that clients don't break.
 
-      The API uses an open schema model, which means server my add extra properties to responses. Likewise, the server will ignore any extra query parameters and request body properties. When you write clients, you need to ignore additional properties in responses to ensure they do not break when talking to newer Docker daemons.
+      The API uses an open schema model, which means server may add extra properties to responses. Likewise, the server will ignore any extra query parameters and request body properties. When you write clients, you need to ignore additional properties in responses to ensure they do not break when talking to newer Docker daemons.
 
       Silly table c1  | c2 |
       ----------------|-------------

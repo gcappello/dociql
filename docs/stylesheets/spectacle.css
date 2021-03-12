@@ -47,6 +47,12 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     width: 40%;
     float: left;
     text-align: right; }
+  #spectacle .prop-title-error-code {
+    color: #cc4b37; }
+    #spectacle .prop-title-error-code a {
+      color: #cc4b37; }
+      #spectacle .prop-title-error-code a:hover {
+        color: darkred; }
   #spectacle .prop-error-message {
     width: 40% !important;
     text-align: right;

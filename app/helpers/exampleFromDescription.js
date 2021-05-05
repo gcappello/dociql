@@ -10,6 +10,10 @@ module.exports = function(description) {
         if (match !== null) {
             try {
                 example = JSON.parse(String(match[1]));
+
+                if (Array.isArray(example) && example.length > 0) {
+                    return example.join();
+                }
             } catch (e) {
                 console.log(
                     '\x1b[43m\x1b[30m[WARNING]',

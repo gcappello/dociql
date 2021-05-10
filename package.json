@@ -42,7 +42,7 @@
   "homepage": "https://github.com/gcappello/dociql",
   "dependencies": {
     "bluebird": "^3.5.2",
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "1.0.0-rc.2",
     "clarify": "^2.1.0",
     "coffeescript": "^2.5.1",
     "commander": "*",
